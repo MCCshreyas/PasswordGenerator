@@ -1,10 +1,39 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <form method="post">
+        <h2>Password Generator</h2>
+        <div class="result-container">
+            <span id="result">@Model.PasswordResult</span>
+            <button class="btn" id="clipboard" type="button" onclick="alert(1)">
+                <i class="far fa-clipboard"></i>
+            </button>
+        </div>
+        <div>
+            <div class="setting">
+                @Html.DisplayNameFor(m => m.InputModel.Length)
+                <input asp-for="InputModel.Length" max="@Model.MaxLength" min="@Model.MinLength"/>
+            </div>
+            <div class="setting">
+                @Html.DisplayNameFor(m => m.InputModel.UppercaseAllowed)
+                <input asp-for="InputModel.UppercaseAllowed"/>
+            </div>
+            <div class="setting">
+                @Html.DisplayNameFor(m => m.InputModel.LowercaseAllowed)
+                <input asp-for="InputModel.LowercaseAllowed"/>
+            </div>
+            <div class="setting">
+                @Html.DisplayNameFor(m => m.InputModel.NumbersAllowed)
+                <input asp-for="InputModel.NumbersAllowed"/>
+            </div>
+            <div class="setting">
+                @Html.DisplayNameFor(m => m.InputModel.SymbolsAllowed)
+                <input asp-for="InputModel.SymbolsAllowed"/>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-large">
+            Generate password
+        </button>
+    </form>
 </div>
